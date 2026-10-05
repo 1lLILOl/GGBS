@@ -1,0 +1,208 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #eee;
+}
+
+:root{
+    --primary-color: #350054;
+    --secondary-color: whitesmoke;
+    --tertiary-color: #211535;
+}
+
+.title{
+    font-size: clamp(25px, 8dvw, 50px);
+    text-align: center;
+    margin: clamp(5px, 3dvh, 15px) clamp(15px, 5dvh, 30px) auto;
+}
+
+
+.content{
+    position: relative;
+    display: flex;
+
+    background: var(--primary-color);
+    border: var(--tertiary-color) 1px solid;
+    
+    /* padding: clamp(4px, 2.5dvw, 20px); */
+    border-radius: clamp(8px, 4dvw, 20px);
+    box-shadow: 5px 5px 10px 1.5px black;
+
+    width: clamp(350px, 65dvw, 900px);
+    height: clamp(200px, 75dvh, 600px);
+    margin: clamp(10px, 4dvh, 30px) auto;
+}
+
+
+#sections{
+    z-index: 5;
+    position: absolute;
+    left: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    width: clamp(5px, 10%, 50px);
+    height: clamp(50px, 50%, 200px);
+    padding: 2px;
+    background: var(--secondary-color);
+    border: var(--tertiary-color) 1px solid;
+    border-radius: 5px;
+
+    button{
+
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        border: var(--tertiary-color) 1px solid;
+        margin: clamp(1px, 2%, 10px);
+        flex: 1 1 100%;
+
+        
+    }
+
+    button:hover{
+
+        background: var(--tertiary-color);
+        padding: 5px;
+    }
+}
+
+
+#activeDivContainer{
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: clamp(8px, 4dvw, 20px);
+    overflow: hidden;
+}
+
+#activeDiv{
+
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: var(--secondary-color);
+    border: 1px solid black;
+    /* flex: 0 0 50%; */
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+
+    /* animation: activeDivToLeft 0.35s ease-in-out forwards; */
+    /* animation: activeDivToTop 0.35s ease-in-out forwards; */
+}
+
+#backgroundImgs{
+
+    position: absolute;
+    margin: clamp(4px, 2.5dvw, 20px);
+}
+
+
+
+.smallImg{
+    width: clamp(220px, 30%, 500px);
+    border: black solid 3px;
+}
+
+
+#saveData, #measureDist{
+
+    margin: clamp(10px, 10%, 30px);
+
+
+    color: white;
+    text-shadow: 
+        1px 1px black,
+        -1px 1px black,
+        1px -1px black,
+        -1px -1px black
+    ;
+}
+
+#measureDist{
+
+    display: none;
+
+}
+
+
+@keyframes activeDivToLeft {
+    0%{
+
+        border-top-left-radius: 10%;
+        border-bottom-left-radius: 10%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        left: 50%;
+    }
+    100%{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 10%;
+        border-bottom-right-radius: 10%;
+        left: 0;
+    }
+}
+
+@keyframes activeDivToTop {
+    0%{
+
+        border-top-left-radius: 10%;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 10%;
+        border-bottom-right-radius: 0;
+        top: 50%;
+    }
+    100%{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 10%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 10%;
+        top: 0;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    
+    .content{
+        display: block;
+        text-align: center;
+    }
+
+    #sections{
+        top: -5%;
+        left: 50%;
+        transform: translate(-50%);
+        width: clamp(10px, 50%, 200px);
+        height: 8%;
+        flex-direction: row;
+        
+    }
+
+
+    #backgroundImgs{
+        height: 50%;
+
+    }
+
+    #activeDiv{
+
+
+        width: 100%;
+        height: 50%;
+        top: 50%;
+        left: 0;
+
+        border-top-right-radius: 10%;
+        border-top-left-radius: 10%;
+        border-bottom-left-radius: 0;
+    }
+
+}
