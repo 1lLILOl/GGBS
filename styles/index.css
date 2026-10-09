@@ -19,6 +19,12 @@ body{
     margin: clamp(5px, 3dvh, 15px) clamp(15px, 5dvh, 30px) auto;
 }
 
+.subtitle{
+    font-size: clamp(20px, 6dvw, 40px);
+    text-align: center;
+    margin: clamp(3px, 2dvh, 12px) clamp(15px, 5dvh, 25px) auto;
+}
+
 
 .content{
     position: relative;
@@ -28,11 +34,11 @@ body{
     border: var(--tertiary-color) 1px solid;
     
     /* padding: clamp(4px, 2.5dvw, 20px); */
-    border-radius: clamp(8px, 4dvw, 20px);
+    border-radius: clamp(8px, 4dvw, 30px);
     box-shadow: 5px 5px 10px 1.5px black;
 
-    width: clamp(350px, 65dvw, 900px);
-    height: clamp(200px, 75dvh, 600px);
+    width: clamp(350px, 75dvw, 1200px);
+    height: clamp(200px, 80dvh, 750px);
     margin: clamp(10px, 4dvh, 30px) auto;
 }
 
@@ -76,7 +82,7 @@ body{
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: clamp(8px, 4dvw, 20px);
+    border-radius: clamp(8px, 4dvw, 30px);
     overflow: hidden;
 }
 
@@ -94,18 +100,38 @@ body{
 
     /* animation: activeDivToLeft 0.35s ease-in-out forwards; */
     /* animation: activeDivToTop 0.35s ease-in-out forwards; */
+
 }
 
-#backgroundImgs{
+.alignedInputDivsContainer{
+
+    display: flex;
+    flex-direction: column;
+}
+
+.alignedInputDiv{
+    display: block;
+    margin: 5px clamp(5px, 2dvw, 20px) auto;
+    text-align: center;
+}
+
+#renderDiv{
 
     position: absolute;
-    margin: clamp(4px, 2.5dvw, 20px);
+    margin: clamp(4px, 2dvw, 20px);
+    height: 100%;
 }
 
 
 
 .smallImg{
     width: clamp(220px, 30%, 500px);
+    border: black solid 3px;
+}
+
+.largeImg{
+    max-width: fit-content;
+    height: clamp(200px, 70%, 700px);
     border: black solid 3px;
 }
 

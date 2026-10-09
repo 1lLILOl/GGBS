@@ -16,33 +16,60 @@
 
         <div id="sections">
 
-            <button id="openSaveSection">
+            <button class="sectionBtns" data-section="saveData">
                 Save
             </button>
 
-            <button id="openDistanceMeasureSection">
+            <button class="sectionBtns" data-section="measureDist">
                 Dist
             </button>
 
         </div>
 
 
-        <div id="backgroundImgs">
+        <div id="renderDiv">
 
-            <img class="smallImg" src="img/SienaVsAlexandria.png">
+
+
         </div>
+
+        <!-- <div id="backgroundImgs">
+
+            <img class="largeImg" src="img/terraEsfera.jpg">
+        </div> -->
 
         <div id="activeDivContainer">
 
             <div id="activeDiv">
 
-                <div id="saveData">
+                <div id="saveData" class="sectionDivs">
 
-                    <label for="placeName">Nome do lugar:</label>
-                    <input type="text" id="placeName" name="placeName">
+                    <h2 class="subtitle">Salvar Dados</h2>
+
+                    <div class="alignedInputDivsContainer">
+
+                        <div class="alignedInputDiv">
+                            <label for="placeName">Nome do lugar:</label>
+                            <input type="text" id="placeName" name="placeName">
+                        </div>
+                        
+
+                        <div class="alignedInputDiv">
+                            <label for="saveDate">Data:</label>
+                            <input type="date" id="saveDate" name="saveDate">
+                        </div>
+                        
+
+                        <div class="alignedInputDiv">
+                            <label for="saveTime">Horário:</label>
+                            <input type="time" id="saveTime" name="saveTime">
+                        </div>
+                    </div>
+                    
+                    
                 </div>
 
-                <div id="measureDist">
+                <div id="measureDist" class="sectionDivs">
 
                     <label for="firstPlaceName">Nome do primeiro lugar:</label>
                     <input type="text" id="firstPlaceName" name="firstPlaceName">
@@ -56,7 +83,7 @@
 
     </div>
 
-    <script src="scripts/index.js"></script>
+    <script src="scripts/main.js" type="module"></script>
 
 </body>
 </html>
