@@ -17,11 +17,15 @@
         <div id="sections">
 
             <button class="sectionBtns" data-section="saveData">
-                Save
+                Salvar
             </button>
 
             <button class="sectionBtns" data-section="measureDist">
-                Dist
+                Distância
+            </button>
+
+            <button class="sectionBtns" data-section="viewData">
+                Ver
             </button>
 
         </div>
@@ -44,7 +48,7 @@
 
                 <div id="saveData" class="sectionDivs">
 
-                    <h2 class="subtitle">Salvar Dados</h2>
+                    <h2 class="subtitle">Salvar dados</h2>
 
                     <div class="alignedInputDivsContainer">
 
@@ -71,9 +75,41 @@
 
                 <div id="measureDist" class="sectionDivs">
 
-                    <label for="firstPlaceName">Nome do primeiro lugar:</label>
-                    <input type="text" id="firstPlaceName" name="firstPlaceName">
+                    <h2 class="subtitle">Distância - 2 locais</h2>
+
+
+                    <div class="alignedInputDivsContainer">
+
+                        <div class="alignedInputDiv">
+
+                            <label for="firstPlaceName">Nome do primeiro lugar:</label>
+                            <input type="text" id="firstPlaceName" name="firstPlaceName">
+                        </div>
+
+                        <div class="alignedInputDiv">
+                            
+                            <label for="secondPlaceName">Nome do segundo lugar:</label>
+                            <input type="text" id="secondPlaceName" name="secondPlaceName">
+                        </div>
+
+                    </div>
+
                 </div>
+
+
+                <div id="viewData" class="sectionDivs">
+
+                    <h2 class="subtitle">Ver dados</h2>
+
+                    <div class="alignedInputDivsContainer">
+
+                        <div class="alignedInputDiv">
+                            <label for="placeName">Nome do lugar:</label>
+                            <input type="text" id="placeName" name="placeName">
+                        </div>
+
+                    </div>
+                 </div>
 
             </div>
         </div>

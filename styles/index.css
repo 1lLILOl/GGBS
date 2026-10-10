@@ -14,15 +14,15 @@ body{
 }
 
 .title{
-    font-size: clamp(25px, 8dvw, 50px);
+    font-size: clamp(35px, 8dvw, 50px);
     text-align: center;
-    margin: clamp(5px, 3dvh, 15px) clamp(15px, 5dvh, 30px) auto;
+    margin: clamp(5px, 3dvh, 15px) auto clamp(15px, 5dvh, 30px) ;
 }
 
 .subtitle{
-    font-size: clamp(20px, 6dvw, 40px);
+    font-size: clamp(10px, 5dvw, 40px);
     text-align: center;
-    margin: clamp(3px, 2dvh, 12px) clamp(15px, 5dvh, 25px) auto;
+    margin: clamp(3px, 2dvh, 12px) auto clamp(8px, 3dvh, 15px) ;
 }
 
 
@@ -51,7 +51,8 @@ body{
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    width: clamp(5px, 10%, 50px);
+    width: max-content;
+    /* width: clamp(5px, 10%, 50px); */
     height: clamp(50px, 50%, 200px);
     padding: 2px;
     background: var(--secondary-color);
@@ -60,19 +61,20 @@ body{
 
     button{
 
-        background: var(--primary-color);
-        color: var(--secondary-color);
+        background: var(--secondary-color);
+        color: black;
         border: var(--tertiary-color) 1px solid;
         margin: clamp(1px, 2%, 10px);
         flex: 1 1 100%;
+       
 
-        
     }
 
     button:hover{
 
         background: var(--tertiary-color);
-        padding: 5px;
+        color: var(--secondary-color);
+        /* padding: 5px; */
     }
 }
 
@@ -103,22 +105,55 @@ body{
 
 }
 
+
+.sectionDivs{
+
+    display: none;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    /* color: white;
+    text-shadow: 
+        1px 1px black,
+        -1px 1px black,
+        1px -1px black,
+        -1px -1px black
+    ; */
+    color: black;
+
+
+    .subtitle{
+        margin-top: 0;
+    }
+
+}
+
+#saveData{
+    display: block;
+
+}
+
 .alignedInputDivsContainer{
 
     display: flex;
     flex-direction: column;
+    height: clamp(calc(100% - 55px), calc(100% - 14dvw), calc(100% - 20px));
+    justify-content: space-evenly;
+
+
 }
 
 .alignedInputDiv{
+    flex: 1 1 100%;
     display: block;
-    margin: 5px clamp(5px, 2dvw, 20px) auto;
     text-align: center;
 }
 
 #renderDiv{
 
     position: absolute;
-    margin: clamp(4px, 2dvw, 20px);
+    /* margin: clamp(4px, 2dvw, 20px); */
     height: 100%;
 }
 
@@ -135,26 +170,6 @@ body{
     border: black solid 3px;
 }
 
-
-#saveData, #measureDist{
-
-    margin: clamp(10px, 10%, 30px);
-
-
-    color: white;
-    text-shadow: 
-        1px 1px black,
-        -1px 1px black,
-        1px -1px black,
-        -1px -1px black
-    ;
-}
-
-#measureDist{
-
-    display: none;
-
-}
 
 
 @keyframes activeDivToLeft {
@@ -207,9 +222,15 @@ body{
         left: 50%;
         transform: translate(-50%);
         width: clamp(10px, 50%, 200px);
-        height: 8%;
+        height: 5%;
         flex-direction: row;
+        padding: 0.5px;
         
+
+        button{
+            margin: clamp(0.3px, 1%, 6px);
+   
+        }
     }
 
 

@@ -77,7 +77,6 @@ export function initGui() {
 
         for (let i = 0; i < sectionDivs.length; i++ ){
 
-            console.log(sectionDivs[i]);
             sectionDivs[i].style.display = "none";
         }
 
