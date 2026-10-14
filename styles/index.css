@@ -14,13 +14,13 @@ body{
 }
 
 .title{
-    font-size: clamp(35px, 8dvw, 50px);
+    font-size: clamp(45px, 9dvw, 50px);
     text-align: center;
     margin: clamp(5px, 3dvh, 15px) auto clamp(15px, 5dvh, 30px) ;
 }
 
 .subtitle{
-    font-size: clamp(10px, 5dvw, 40px);
+    font-size: clamp(30px, 6dvw, 40px);
     text-align: center;
     margin: clamp(3px, 2dvh, 12px) auto clamp(8px, 3dvh, 15px) ;
 }
@@ -46,7 +46,7 @@ body{
 #sections{
     z-index: 5;
     position: absolute;
-    left: -5%;
+    left: -6%;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -138,16 +138,70 @@ body{
 
     display: flex;
     flex-direction: column;
-    height: clamp(calc(100% - 55px), calc(100% - 14dvw), calc(100% - 20px));
+    height: clamp(calc(100% - 65px), calc(100% - 14dvw), calc(100% - 20px));
     justify-content: space-evenly;
+    align-items: start;
+    padding-left: clamp(5px, 2%, 15px);
 
+    
+    .switchAngle { display: none; }
+    .switchLength { display: block; }
 
 }
 
+.showAngles .switchAngle { display: block; }
+.showAngles .switchLength { display: none; }
+
 .alignedInputDiv{
+    position: relative;
     flex: 1 1 100%;
     display: block;
-    text-align: center;
+    width: 100%;
+
+
+    .sendData{
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, -50%);
+        
+
+        width: 30%;
+        height: clamp(20px, 60%, 40px);
+    }
+
+    .utilBtnsDiv{
+        position: absolute;
+        display: flex;
+        flex-direction: row-reverse;
+        
+
+        width: clamp(10px, 20%, 100px);
+        right: 2%;
+
+        font-size: clamp(7px, 2dvh, 40px);
+        height: 100%;
+        gap: 5px;
+        
+        button{
+            /* flex: 1 1 auto; */
+            aspect-ratio: 1;
+            height: clamp(10px, 80%, 40px);
+
+        }
+    }
+
+    /* #switchAngleLength{
+        position: absolute;
+        right: 2%;
+        bottom: 0;
+        transform: translateY(-50%);
+
+        font-size: clamp(7px, 2dvh, 40px);
+        height: clamp(15px, 4dvh, 40px);
+        aspect-ratio: 1/1;
+        
+    } */
 }
 
 #renderDiv{
@@ -190,6 +244,34 @@ body{
     }
 }
 
+@keyframes activeDivToRight {
+    
+    0%{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 10%;
+        border-bottom-right-radius: 10%;
+        left: 0;
+    }
+    100%{
+
+        border-top-left-radius: 10%;
+        border-bottom-left-radius: 10%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        left: 50%;
+    }
+}
+
+
+#activeDiv[data-side="left"], #renderDiv[data-side="left"] {
+    animation: activeDivToLeft 0.35s ease-in-out forwards;
+}
+#activeDiv[data-side="right"], #renderDiv[data-side="right"] {
+    animation: activeDivToRight 0.35s ease-in-out forwards;
+}
+
+
 @keyframes activeDivToTop {
     0%{
 
@@ -208,13 +290,32 @@ body{
     }
 }
 
+@keyframes activeDivToBottom {
+    
+    0%{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 10%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 10%;
+        top: 0;
+    }
+    100%{
+
+        border-top-left-radius: 10%;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 10%;
+        border-bottom-right-radius: 0;
+        top: 50%;
+    }
+}
+
 
 
 @media (max-width: 768px) {
     
     .content{
         display: block;
-        text-align: center;
+        /* text-align: center; */
     }
 
     #sections{
@@ -250,6 +351,13 @@ body{
         border-top-right-radius: 10%;
         border-top-left-radius: 10%;
         border-bottom-left-radius: 0;
+    }
+
+    #activeDiv[data-side="left"], #renderDiv[data-side="left"] {
+        animation: activeDivToTop 0.35s ease-in-out forwards;
+    }
+    #activeDiv[data-side="right"], #renderDiv[data-side="right"] {
+        animation: activeDivToBottom 0.35s ease-in-out forwards;
     }
 
 }

@@ -1,21 +1,3 @@
-const isMobile = window.matchMedia("(max-width: 768px)");
-
-const sideDataIsMobile = {
-
-    [true]: {
-
-        ["Animation"]: "activeDivToTop",
-        
-    },
-    [false]: {
-
-        ["Animation"]: "activeDivToLeft"
-    }
-
-}
-
-
-
 const activeDiv = document.body.querySelector("#activeDiv");
 const renderDiv = document.body.querySelector("#renderDiv");
 
@@ -25,84 +7,93 @@ function switchSide() {
     
     sideLeft = !sideLeft;
 
-    const sideData = sideDataIsMobile[isMobile.matches];
-
-    const normalAnimation = `${sideData["Animation"]} 0.35s ease-in-out forwards`;
-    const reverseAnimation = `${sideData["Animation"]} 0.35s ease-in-out reverse forwards`;
-
-
-
-    activeDiv.style.animation = "none";
-    renderDiv.style.animation = "none";
-
-    void activeDiv.offsetWidth;
-    void renderDiv.offsetWidth;
-
-    if (sideLeft) {
-        
-        activeDiv.style.animation = normalAnimation;
-        renderDiv.style.animation = reverseAnimation;
-
-    }else{
-
-        activeDiv.style.animation = reverseAnimation;
-        renderDiv.style.animation = normalAnimation;
-    }
+    activeDiv.dataset.side =  sideLeft ? "left" : "right";
+    renderDiv.dataset.side =  sideLeft ? "right" : "left";
 
 }
 
+function initSaveDiv() {
 
-window.addEventListener('resize', () => {
-  
-    activeDiv.style.animation = "none";
-    renderDiv.style.animation = "none";
+    const saveData = document.body.querySelector("#saveData");
 
-    void activeDiv.offsetWidth;
-    void renderDiv.offsetWidth;
+    // function addTimezones() {
+
+    //     const timezone = saveData.querySelector("#timezone");
+
+    //     for (let i = -12; i < 13; i++) {
+
+    //         const option = document.createElement("option");
+    //         option.value = i;
+    //         option.textContent = `GMT ${i}`;
+
+    //         timezone.appendChild(option);
+    //     }
+    // }
+
+    function enableSwitchingAngleLength() {
+
+        const switchAngleLengthBtn = saveData.querySelector("#switchAngleLength");
+
+        let anglesEnable = false;
+        switchAngleLengthBtn.addEventListener("click", () => {
+
+            anglesEnable = !anglesEnable;
+
+            saveData.classList.toggle("showAngles", anglesEnable);
+            
+            switchAngleLengthBtn.textContent = anglesEnable ? "o" : "x/y";
+        });
+    }
+
+    function enableAutoFillingToday() {
+
+        const fillNowHere = saveData.querySelector("#fillNowHere");
+
+        const dateEl = saveData.querySelector("#date"); 
+        const timeEl = saveData.querySelector("#time"); 
+
+        fillNowHere.addEventListener("click", () => {
+
+            const currentDate = new Date();
+            dateEl.value = currentDate.toISOString().split('T')[0];
+            timeEl.value = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+            
+        });
+    }
     
-
-});
-
-
+    // addTimezones();
+    enableAutoFillingToday();
+    enableSwitchingAngleLength();
+    
+}
 
 
 export function initGui() {
 
     const sectionDivs = document.body.querySelectorAll(".sectionDivs");
     const sectionBtns = document.body.querySelectorAll(".sectionBtns");
-    let currentSectionDiv = "saveData";
+    let currentSectionDivId = "saveData";
 
 
-    function disableAllSections() {
+    sectionBtns.forEach((btn) => {
 
-        for (let i = 0; i < sectionDivs.length; i++ ){
+        const divId = btn.dataset.section;
+        const div = document.body.querySelector(`#${divId}`);
 
-            sectionDivs[i].style.display = "none";
-        }
+        btn.addEventListener("click", () => {
 
-    }
-
-
-    for (let i = 0; i < sectionBtns.length; i++ ){
-
-        const sectionBtn = sectionBtns[i];
-        const sectionDivId = sectionBtn.dataset.section;
-        const sectionDiv = document.body.querySelector(`#${sectionDivId}`);
-        
-
-        sectionBtn.addEventListener("click", () => {
-
-            if (currentSectionDiv === sectionDivId) return;
+            if (currentSectionDivId === divId) return;
 
             switchSide();
-            disableAllSections();
+            sectionDivs.forEach((d) => d.style.display = "none");
+            div.style.display = "block";
 
-            sectionDiv.style.display = "block";
+            currentSectionDivId = divId;
+        })
+    })
 
-            currentSectionDiv = sectionDivId;
-            
-        });
-    }
+
+    initSaveDiv();
 } 
 
 

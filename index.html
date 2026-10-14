@@ -46,27 +46,75 @@
 
             <div id="activeDiv">
 
+                <datalist id="searchOptions"></datalist>
+
                 <div id="saveData" class="sectionDivs">
 
                     <h2 class="subtitle">Salvar dados</h2>
 
-                    <div class="alignedInputDivsContainer">
+                    <div class="alignedInputDivsContainer">  
 
                         <div class="alignedInputDiv">
                             <label for="placeName">Nome do lugar:</label>
-                            <input type="text" id="placeName" name="placeName">
+                            <input type="text" id="placeName" name="placeName" list="searchOptions" placeholder="Xique-Xique, Bahia">
                         </div>
                         
 
                         <div class="alignedInputDiv">
-                            <label for="saveDate">Data:</label>
-                            <input type="date" id="saveDate" name="saveDate">
+                            <label for="date">Data:</label>
+                            <input type="date" id="date" name="date">
                         </div>
                         
+                        <div class="alignedInputDiv">
+                            <label for="time">Horário:</label>
+                            <input type="time" id="time" name="time">
+                        </div>
+
+                        <!-- <div class="alignedInputDiv">
+                            <label for="time">Horário e fuso-horário:</label>
+                            <input type="time" id="time" name="time">
+                            <select name="timezone" id="timezone"></select>
+                        </div> -->
+
+
+                        <div class="alignedInputDiv switchLength">
+                            <label for="shadowLength">Tamanho da sombra(centímetros):</label>
+                            <input type="number" id="shadowLength" name="shadowLength" placeholder="10">
+                        </div>
 
                         <div class="alignedInputDiv">
-                            <label for="saveTime">Horário:</label>
-                            <input type="time" id="saveTime" name="saveTime">
+                            <label class="switchAngle" for="shadowAngle">Ângulo da sombra(graus):</label>
+                            <input class="switchAngle" type="number" id="shadowAngle" name="shadowAngle" placeholder="30">
+
+                            
+                            <label class="switchLength" for="stickHeight">Tamanho do objeto vertical(centímetros):</label>
+                            <input class="switchLength" type="number" id="stickHeight" name="stickHeight" placeholder="70">
+                        </div>
+
+
+                        <div class="alignedInputDiv">
+                            <label class="switchAngle" for="northAngle">*Opcional - Ângulo do norte(graus):</label>
+                            <input class="switchAngle" type="number" id="northAngle" name="northAngle" placeholder="30">
+                            
+
+                            <label class="switchLength" for="northProjection">Tamanho da projeção do norte(centímetros):</label>
+                            <input class="switchLength" type="number" id="northProjection" name="northProjection" placeholder="70">
+                        </div>
+
+
+                        <div class="alignedInputDiv">
+
+                            <div class="utilBtnsDiv">
+
+                                <button id="fillNowHere">Hoje</button>
+
+                                <button id="switchAngleLength">x/y</button>
+
+                            </div>
+
+                            
+
+                            <button class="sendData">Enviar</button>
                         </div>
                     </div>
                     
@@ -83,13 +131,23 @@
                         <div class="alignedInputDiv">
 
                             <label for="firstPlaceName">Nome do primeiro lugar:</label>
-                            <input type="text" id="firstPlaceName" name="firstPlaceName">
+                            <input type="text" id="firstPlaceName" name="firstPlaceName" list="searchOptions">
                         </div>
 
                         <div class="alignedInputDiv">
                             
                             <label for="secondPlaceName">Nome do segundo lugar:</label>
-                            <input type="text" id="secondPlaceName" name="secondPlaceName">
+                            <input type="text" id="secondPlaceName" name="secondPlaceName" list="searchOptions">
+                        </div>
+
+                        <div class="alignedInputDiv showData">
+
+
+
+                        </div>
+
+                        <div class="alignedInputDiv">
+                            <button class="sendData">Medir distância</button>
                         </div>
 
                     </div>
@@ -105,7 +163,17 @@
 
                         <div class="alignedInputDiv">
                             <label for="placeName">Nome do lugar:</label>
-                            <input type="text" id="placeName" name="placeName">
+                            <input type="text" id="placeName" name="placeName" list="searchOptions">
+                        </div>
+
+                        <div class="alignedInputDiv showData">
+
+
+
+                        </div>
+
+                        <div class="alignedInputDiv">
+                            <button class="sendData">Ver</button>
                         </div>
 
                     </div>
