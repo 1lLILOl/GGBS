@@ -16,6 +16,10 @@
 
         <div id="sections">
 
+            <button class="sectionBtns" data-section="onboarding">
+                Início
+            </button>
+
             <button class="sectionBtns" data-section="saveData">
                 Salvar
             </button>
@@ -27,6 +31,8 @@
             <button class="sectionBtns" data-section="viewData">
                 Ver
             </button>
+
+
 
         </div>
 
@@ -48,6 +54,36 @@
 
                 <datalist id="searchOptions"></datalist>
 
+                <div id="onboarding" class="sectionDivs">
+
+                    <h2 class="subtitle">Início</h2>
+
+                    <div class="alignedInputDivsContainer">
+
+                         <div class="alignedInputDiv">
+
+                            <p>
+                                O GGBS (Get GPS By Shadow do inglês descubra sua posição GPS pela sombra)
+                                é um website que aproxima a posição GPS de um local com base em
+                                dados contínuos dos usuários e, também, estima distância entre locais,
+                                os únicos dados recebidos são as sombras formadas por objetos
+                                perpendiculares ao solo nos locais, usando o método de Eratóstenes
+                                para realizar as estimativas.
+                            </p>
+
+                            <p>
+                                Para salvar os dados de um local, existem as opções de optar entre preencher
+                                o ângulo da sombra (formado entre o objeto vertical e os raios de sol) e 
+                                o ângulo de orientação do norte da Terra (formado entre a direção norte e
+                                a sombra do objeto), ou preencher com o tamanho do objeto, da sombra e do 
+                                vetor componente que é colinear com o norte.
+                            </p>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
                 <div id="saveData" class="sectionDivs">
 
                     <h2 class="subtitle">Salvar dados</h2>
@@ -63,6 +99,8 @@
                         <div class="alignedInputDiv">
                             <label for="date">Data:</label>
                             <input type="date" id="date" name="date">
+
+                            <button id="fillNowHere">Hoje</button>
                         </div>
                         
                         <div class="alignedInputDiv">
@@ -78,7 +116,7 @@
 
 
                         <div class="alignedInputDiv switchLength">
-                            <label for="shadowLength">Tamanho da sombra(centímetros):</label>
+                            <label for="shadowLength">Tamanho da sombra(cm):</label>
                             <input type="number" id="shadowLength" name="shadowLength" placeholder="10">
                         </div>
 
@@ -87,7 +125,7 @@
                             <input class="switchAngle" type="number" id="shadowAngle" name="shadowAngle" placeholder="30">
 
                             
-                            <label class="switchLength" for="stickHeight">Tamanho do objeto vertical(centímetros):</label>
+                            <label class="switchLength" for="stickHeight">Tamanho do objeto vertical(cm):</label>
                             <input class="switchLength" type="number" id="stickHeight" name="stickHeight" placeholder="70">
                         </div>
 
@@ -97,7 +135,7 @@
                             <input class="switchAngle" type="number" id="northAngle" name="northAngle" placeholder="30">
                             
 
-                            <label class="switchLength" for="northProjection">Tamanho da projeção do norte(centímetros):</label>
+                            <label class="switchLength" for="northProjection">*Opcional - Tamanho da projeção do norte(cm):</label>
                             <input class="switchLength" type="number" id="northProjection" name="northProjection" placeholder="70">
                         </div>
 
@@ -106,7 +144,7 @@
 
                             <div class="utilBtnsDiv">
 
-                                <button id="fillNowHere">Hoje</button>
+                                <!-- <button id="fillNowHere">Hoje</button> -->
 
                                 <button id="switchAngleLength">x/y</button>
 
@@ -115,6 +153,9 @@
                             
 
                             <button class="sendData">Enviar</button>
+
+                            <span class="errorMessage">Por favor, preencha todos os campos devidamente.</span>
+                            <span class="successMessage">Dados enviados com sucesso!</span>
                         </div>
                     </div>
                     

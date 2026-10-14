@@ -120,6 +120,10 @@ function initSaveData() {
     const northAngleEl = saveDataDiv.querySelector("#northAngle");
     const northProjectionEl = saveDataDiv.querySelector("#northProjection");
 
+
+    const errorMsg = saveDataDiv.querySelector(".errorMessage");
+    const successMsg = saveDataDiv.querySelector(".successMessage");
+
     
     dropdownPlacesTyping(placeNameEl);
     // Put a pop up saying theres a error and another telling it was a success
@@ -129,7 +133,17 @@ function initSaveData() {
         if (
             !placeNameEl.value || !dateEl.value || !timeEl.value || 
             !(shadowAngleEl.value || (shadowLengthEl.value && stickHeightEl.value))
-        ) return;
+        ) {
+            
+            errorMsg.classList.add("visible");
+
+            setTimeout( () => {
+                errorMsg.classList.remove("visible");
+
+            },3000);
+
+            return;
+        };
         // if (
         //     !placeNameEl.value || !dateEl.value || !timeEl.value || !timezoneEl.value || 
         //     !(shadowAngleEl.value || (shadowLengthEl.value && stickHeightEl.value))
@@ -169,6 +183,13 @@ function initSaveData() {
         }
         const data = postToGas(params);
         console.log(data);
+
+        successMsg.classList.add("visible");
+
+        setTimeout( () => {
+            successMsg.classList.remove("visible");
+
+        },3000);
     }
 
     sendBtn.addEventListener("click", sendData);
