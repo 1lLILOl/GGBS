@@ -55,8 +55,12 @@ function initSaveDiv() {
         fillNowHere.addEventListener("click", () => {
 
             const currentDate = new Date();
-            dateEl.value = currentDate.toISOString().split('T')[0];
-            timeEl.value = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+            
+            const timezoneOffset = currentDate.getTimezoneOffset() * 60000;
+            const localISODate = new Date(currentDate.getTime() - timezoneOffset).toISOString();
+
+            dateEl.value = localISODate.split('T')[0]; 
+            timeEl.value = localISODate.split('T')[1].slice(0, 5); 
             
         });
     }
