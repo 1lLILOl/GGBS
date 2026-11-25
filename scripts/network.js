@@ -1,5 +1,5 @@
-const url = "https://script.google.com/macros/s/AKfycbwwraiR-aLnuew1Yr_NmHTpE4tySt2nH__kkyPCS7qRHtz0ulhNlBNECq-Lz3yi8BKNbA/exec";
-
+// const url = "https://script.google.com/macros/s/AKfycbwwraiR-aLnuew1Yr_NmHTpE4tySt2nH__kkyPCS7qRHtz0ulhNlBNECq-Lz3yi8BKNbA/exec";
+const url = "https://script.google.com/macros/s/AKfycbxsDBxqAqMHMHmHVMRF8krfYOcixg6HUJ8i9l_xw9qQLyqfD7-XwQVvOm1ZkxT2p60Imw/exec";
 
 export async function getFromGas(params) {
 

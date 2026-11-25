@@ -12,7 +12,7 @@ async function initAllPlaces() {
         
         const response = await fetch(sheetsCSVUrl);
         const csvText = await response.text();
-
+        
         let lines = csvText.split("\n");
         lines = lines.slice(1);
 
@@ -198,7 +198,47 @@ function initSaveData() {
 
 function initMeasureDist() {
 
+    const measureDistDiv = document.body.querySelector("#measureDist");
 
+    const firstPlaceNameEl = measureDistDiv.querySelector("#firstPlaceName");
+    const secondPlaceNameEl = measureDistDiv.querySelector("#secondPlaceName");
+    const sendBtn = measureDistDiv.querySelector(".sendData");
+
+    const distanceResultEl = measureDistDiv.querySelector("#distanceResult");
+
+    dropdownPlacesTyping(firstPlaceNameEl);
+    dropdownPlacesTyping(secondPlaceNameEl);
+    
+    async function getData() {
+
+        distanceResultEl.textContent = "Calculando...";
+
+        const firstPlace = firstPlaceNameEl.value;
+        const secondPlace = secondPlaceNameEl.value;
+        
+        if (!firstPlace || !secondPlace) return;
+
+        const params = {
+            action: "getDistanceOfPlaces",
+            firstName: firstPlace,
+            secondName: secondPlace,
+        }
+
+        const json = await getFromGas(params);
+
+        const data = json.data;
+        console.log(json);
+        if (data && data.distance) {
+            distanceResultEl.textContent = `Distância: ${data.distance} km`;
+        } else if (json.error && json.error == "NODATAENOUGH") {
+            distanceResultEl.textContent = `Sem dados suficientes para calcular a distância entre ${firstPlace} e ${secondPlace}.`;
+        }
+
+    }
+    
+    sendBtn.addEventListener("click", getData);
+    
+    
 }
 
 function initViewData() {
@@ -209,7 +249,7 @@ function initViewData() {
 
 export function initController() {
 
-    // initMeasureDist();
+    initMeasureDist();
     initSaveData();
     // initViewData();
 
